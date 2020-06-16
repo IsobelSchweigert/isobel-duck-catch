@@ -120,6 +120,10 @@ scene.setBackgroundImage(img`
     7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
     7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
 `) 
+info.setScore(0)
+info.startCountdown(10)
+
+
 
 
 let player = sprites.create(img`
@@ -143,6 +147,8 @@ let player = sprites.create(img`
 
 controller.moveSprite(player)
 
+
+
 let duck=sprites.create(img`
     . . . . . . . . . . b 5 b . . .
     . . . . . . . . . b 5 b . . . .
@@ -165,5 +171,7 @@ let duck=sprites.create(img`
 duck.setPosition(Math.randomRange(0, scene.screenWidth ()),Math.randomRange(0, scene.screenHeight()))
 
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    duck.setPosition(Math.randomRange(0, scene.screenWidth()), Math.randomRange(0, scene.screenHeight()))   
+    duck.setPosition(Math.randomRange(0, scene.screenWidth()), Math.randomRange(0, scene.screenHeight())
+ info.changeScoreBy(1)
 })
+game.onUpdate(function(){
